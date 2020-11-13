@@ -20,7 +20,7 @@
         <div class="card-body">
             <form action="../actions/login.php" method="post">
                 <input type="text" name="username" placeholder="USERNAME" class="form-control mb-2" required autofocus>
-                <input type="password" name="password" placeholder="PASSWORD" class="form-control mb-4">
+                <input type="password" name="passw" placeholder="PASSWORD" class="form-control mb-4">
                 <button type="submit" class="btn btn-dark btn-block" name="btnRegister" value="register">Log in</button>
 
                 <div class="text-center mt-3 small">

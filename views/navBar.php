@@ -26,11 +26,10 @@
                 <li class="nav-item"><a href="./dashboard.php" class="nav-link text-white">Dashboard</a></li>
                 <li class="nav-item"><a href="./userTopList.php" class="nav-link text-white">Word List</a></li>
                 <li class="nav-item"><a href="./addNewWord.php" class="nav-link text-white">Add New Word</a></li>
-                <!-- <li class="nav-item"><a href="./category.php" class="nav-link text-dark">Menu4</a></li> -->
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="./profile.php" class="nav-link"><?= $_SESSION['name'];?></a></li>
+                <li class="nav-item"><a href="./editUser.php" class="nav-link"><?= $_SESSION['name'];?></a></li>
                 <a class="btn btn-danger rounded-pill font-weight-bold" style="width:90px;" href="./logout.php" >Log out</a>
 
             </ul>

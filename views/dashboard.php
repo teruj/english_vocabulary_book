@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+include_once "../classes/user.php";
+
+$user = new User;
+$userList = $user->getUsers();
+
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,24 +42,35 @@
                         <th>Mother Tongue</th>
                         <th>Student</th>
                         <th>Role</th>
-                        <th>Lastly Used ???</th>
-                        <th># of Words</th>
+                        
+                        <!-- <th># of Words</th> -->
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody >
+                    <?php
+                        while($userDetails = $userList->fetch_assoc()){
+                    ?>
+
                     <tr>
-                        <td>50</td>
-                        <td>Takeshi Yamada</td>
-                        <td>Japan</td>
-                        <td>Japanese</td>
-                        <td>N</td>
-                        <td>U</td>
-                        <td>2020-10-21</td>
-                        <td>35</td>
-                        <td><a href="editUser.php"><i class="fas fa-angle-double-right" ></i>Edit user</a></td>
+                        <td><?= $userDetails['id'] ?></td>
+                        <td><?= $userDetails['username'] ?></td>
+                        <td><?= $userDetails['nationality'] ?></td>
+                        <td><?= $userDetails['mother_tongue'] ?></td>
+                        <td><?= $userDetails['student'] ?></td>
+                        <td><?= $userDetails['role'] ?></td>
+                        
+                        <!-- <td></td> -->
+                        <td><a href="editUser.php?id=<?= $userDetails['id'] ?>"><i class="fas fa-angle-double-right" ></i>Edit user</a></td>
                     </tr>
+
+                    <?php
+                        }
+                    ?>
+
+
+
                     <!-- <?php
                         // $result = getFromTables();
                         while($row = $result->fetch_assoc()){

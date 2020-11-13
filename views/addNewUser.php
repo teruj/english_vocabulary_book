@@ -13,6 +13,52 @@
 <body>
 <?php include "navBar.php" ?>
 
+    <div class="card w-25 my-5 mx-auto border-0">
+        <div class="card-header bg-white border-0">
+            <h1 class="text-center">Add New User</h1>
+        </div>
+        <div class="card-body">
+            <form action="../actions/register.php" method="post">
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" class="form-control mb-2" required autofocus>
+
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" class="form-control mb-2" required>
+
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" class="form-control mb-2" maxlength="15" required placeholder="max length: 15">
+
+                <label for="passw">Password</label>
+                <input type="password" name="passw" id="passw" class="form-control mb-5" required>
+
+                <label for="nationality">Nationality</label>
+                <input type="text" name="nationality" id="nationality" class="form-control mb-2" required>
+
+                <label for="MT">Mother Tongue</label>
+                <input type="text" name="MT" id="MT" class="form-control mb-2" required>
+
+                <label for="studentYN">Student</label>
+                <br>
+                <div class="row justify-content-around">
+                    <div class="custom-control custom-radio d-inline px-0">
+                        <input type="radio" name="studentYN" id="sYes" class="form-control-input" value="Y">
+                        <label for="sYes" class="costom-control-label">Yes</label>
+                    </div>
+                    <div class="custom-control custom-radio d-inline pl-0 pr-2">
+                        <input type="radio" name="studentYN" id="sNo" class="form-control-input" checked value="N">
+                        <label for="sNo" class="costom-control-label">No</label>
+                    </div>
+                </div>
+                
+                
+
+                <button type="submit" class="mt-3 btn btn-success btn-block" name="btnRegister" value="addUser">Add New User</button>
+            </form>
+
+       
+        </div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
