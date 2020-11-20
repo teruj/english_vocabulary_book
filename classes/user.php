@@ -250,6 +250,35 @@ class User extends Database{
         
     }
 
+    // public function quizForDummy(){
+    //     $sql = "SELECT word,m_meaning FROM words ";
+
+    //     if($result = $this->conn->query($sql)){
+    //         return $result;
+    //     }else{
+    //         die("Error: ".$this->conn->error);
+    //     }
+    // }
+    public function quizForDummy(){
+        $sql = "SELECT word,m_meaning FROM words ";
+
+        if($result = $this->conn->query($sql)){
+            return $result;
+        }else{
+            die("Error: ".$this->conn->error);
+        }
+    }
+
+    public function quizAnsWord($userID){
+        // $sql = "SELECT sel_word,sel_m_meaning FROM personal_list WHERE `user_id` = '$userID'" ;
+        $sql = "SELECT sel_word,sel_m_meaning FROM personal_list WHERE `user_id` = '$userID' " ;
+        if($result = $this->conn->query($sql)){
+            return $result;
+        }else{
+            die("Error: ".$this->conn->error);
+        }
+    }
+
 }
 
 // $password = password_hash($password, PASSWORD_DEFAULT);

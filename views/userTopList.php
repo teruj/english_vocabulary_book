@@ -103,14 +103,14 @@ if(isset($_POST['sortType'])){
 
                         <form action="" method="post">
                             <th class="col-1 align-middle mt-1 border-0">
-                                Word
-                                <br>
+                                <p class="mb-3">Word</p> 
+                                
                                 <!-- <a href="../actions/sortByWord.php?sortType=ASC" class="btn btn-sm">ASC</a>
                                 <a href="../actions/sortByWord.php?sortType=DESC" class="btn btn-sm">DESC</a> -->
-                                <button name="sortType" value="ASC" class="btn btn-sm btn-light text-primary">
-                                ASC<?php if($sortType == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i>";} ?></button>
-                                <button name="sortType" value="DESC" class="btn btn-sm btn-light text-primary">
-                                DESC<?php if($sortType == 'DESC'){echo "<i class='fas fa-angle-double-down'></i>";} ?></button>
+                                <button name="sortType" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
+                                <?php if($sortType == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
+                                <button name="sortType" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
+                                DESC<?php if($sortType == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
                             </th>
                         </form>
 
@@ -128,10 +128,10 @@ if(isset($_POST['sortType'])){
                         </th>
                         <!-- <th class="align-middle">Memo</th> -->
                         <th class="col-1 align-middle border-0 mt-1">Actions</th>
-                        <th class="col-3 align-middle border-0">Mastery <br><span class="small">(your progess for this word)
+                        <th class="col-3 align-middle border-0 pb-0">Mastery <br><span class="small">(your progess for this word)
                             </span> 
     <form action="../actions/updateUserTopList.php" method="post">
-                            <button class="btn btn-sm btn-primary rounded-pill small"><i class="fas fa-plus"></i> Save Mastery Change</button>
+                            <button class="btn btn-sm btn-primary rounded-pill mt-2"><i class="fas fa-plus"></i> Save Mastery Change</button>
                         </th>
                     </tr>
                 </thead>
