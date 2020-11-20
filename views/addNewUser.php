@@ -1,3 +1,15 @@
+<?php
+session_start();
+
+if(!$_SESSION['id']){
+    header("location: loginRedirect.php");
+    exit;
+}
+
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +25,7 @@
 <body>
 <?php include "navBar.php" ?>
 
-    <div class="card w-25 my-5 mx-auto border-0">
+    <div class="card my-5 mx-auto " style="width: 35%;">
         <div class="card-header bg-white border-0">
             <h1 class="text-center">Add New User</h1>
         </div>
@@ -52,7 +64,9 @@
                 
                 
 
-                <button type="submit" class="mt-3 btn btn-success btn-block" name="btnRegister" value="addUser">Add New User</button>
+                <button type="submit" class="d-block w-50 mx-auto mt-5 btn btn-success rounded-pill" name="btnRegister" value="addUser">Add New User</button>
+
+                <button type="button" name="" class="d-block mt-4 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button>
             </form>
 
        

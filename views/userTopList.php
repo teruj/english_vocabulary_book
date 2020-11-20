@@ -1,10 +1,36 @@
+<?php
+session_start();
+
+if(!$_SESSION['id']){
+    header("location: loginRedirect.php");
+    exit;
+}
+
+include_once "../classes/user.php";
+$user = new User;
+$userList = $user->getMyList();
+
+
+if(isset($_POST['sortType'])){
+    $sortType = $_POST['sortType'];
+
+    // echo $sortType;
+
+    $userList = $user->getMyOrderedList($sortType);// no need 'return $userList' ;
+
+}
+
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="Description" content="Enter your description here"/>
+    <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
     <link rel="stylesheet" href="assets/css/style.css">
@@ -58,137 +84,136 @@
     </style> -->
     <title>User Top</title>
 </head>
+
 <body>
-<?php include "navBar.php"; ?>
-        <p class="text-center  mt-5">
-            <a class="btn btn-outline-primary mx-2 px-5 rounded-pill"  href="addNewWord.php"><i class="fas fa-plus" ></i> Add New Word</a>
+    <?php include "navBar.php" ?>
+    
+        <div class="container mt-5">
+            <p class="text-right small">
+                <a class="btn btn-outline-primary mx-2 px-5 rounded-pill small" href="addNewWord.php"><i class="fas fa-plus"></i> Add New Word</a>
+            
+                <!-- <button class="btn btn-primary mx-2 px-5 rounded-pill small"><i class="fas fa-plus"></i> Save Mastery Change</button> -->
+               
+            </p>
+            <table class="table table-striped table-bordered small">
+                
+            
+                <thead class="table-dark text-center px-0">
+                    <tr class="row align-middle mx-0">
 
-            <!-- <a class="btn btn-outline-success mx-2 px-5 rounded-pill" href="#"><i class="fas fa-plus" ></i> Edit Word List</a> -->
+                        <form action="" method="post">
+                            <th class="col-1 align-middle mt-1 border-0">
+                                Word
+                                <br>
+                                <!-- <a href="../actions/sortByWord.php?sortType=ASC" class="btn btn-sm">ASC</a>
+                                <a href="../actions/sortByWord.php?sortType=DESC" class="btn btn-sm">DESC</a> -->
+                                <button name="sortType" value="ASC" class="btn btn-sm btn-light text-primary">
+                                ASC<?php if($sortType == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i>";} ?></button>
+                                <button name="sortType" value="DESC" class="btn btn-sm btn-light text-primary">
+                                DESC<?php if($sortType == 'DESC'){echo "<i class='fas fa-angle-double-down'></i>";} ?></button>
+                            </th>
+                        </form>
 
-            <a class="btn btn-outline-success mx-2 px-5 rounded-pill" href="#"><i class="fas fa-plus"></i> Save Changes</a>
-        </p>
+                        <th class="col-1 align-middle mt-1 border-0 ">PoS</th>
+                        <th class="col-3 align-middle border-0">
+                            Meaning 
+                            <br>
+                            <i class="small">( max:255char. ) </i>
+                            <!-- <span class="small">(English / Mother Tongue)</span> -->
 
-        <div class="container">
-            <table class="table table-striped table-bordered border small">
-                <thead class="table-dark text-center">
-                    <tr class="align-middle">
-                        <th class="align-middle">Word</th>
-                        <th class="align-middle">PoS</th>
-                        <th class="align-middle">Pronunciation</th>
-                        <th class="align-middle py-0">Meaning <br><span class="small">(Mother Tongue)</span> </th>
-                        <th class="align-middle py-0">Meaning <br><span class="small"> (English)</span></th>
-                        <th class="align-middle">Sample</th>
+                        </th>
+                        <th class="col-3 align-middle border-0">Example
+                            <!-- <span class="small">(sentence / phrase)</span> -->
+
+                        </th>
                         <!-- <th class="align-middle">Memo</th> -->
-                        <th class="align-middle">Edit</th>
-                        <th class="align-middle">Mastery (your progess for this word)</h3></th>
+                        <th class="col-1 align-middle border-0 mt-1">Actions</th>
+                        <th class="col-3 align-middle border-0">Mastery <br><span class="small">(your progess for this word)
+                            </span> 
+    <form action="../actions/updateUserTopList.php" method="post">
+                            <button class="btn btn-sm btn-primary rounded-pill small"><i class="fas fa-plus"></i> Save Mastery Change</button>
+                        </th>
                     </tr>
                 </thead>
 
-                <tbody>
-                    <tr>
-                        <td class="align-middle">house</td>
-                        <td class="align-middle">Noun</td>
-                        <td class="align-middle">*</td>
-                        <td class="align-middle">家</td>
-                        <td class="align-middle">a ~</td>
-                        <td class="align-middle">Your house is big.</td>
-                        <!-- <td class="align-middle">AAA</td> -->
-                        <td class="align-middle">
-                            <a href="editWord.php">Edit</a>
-                            <a href="#">Delete</a>
-                        </td>
-                        <td class="p-0 align-middle ">
-                        <div class="d-flex justify-content-around tabSwitch mr-0 bg-white  text-center px-0 " id="tabSwitch">
-                    
-                            <input id="item-1" class=" radio-inline__input tex" type="radio" name="accessible-radio" value="item-1" checked="checked"/>
-                            <label class="radio-inline__label small" for="item-1">
-                            <i class="fas fa-thumbs-up"></i> <br> Complete
-                            </label>
-                            <input id="item-2" class="radio-inline__input" type="radio" name="accessible-radio" value="item-2"/>
-                            <label class="radio-inline__label small" for="item-2">
-                            <i class="fas fa-check-double"></i> <br> Studying
-                            </label>
-                            <input id="item-3" class="radio-inline__input" type="radio" name="accessible-radio" value="item-3"/>
-                            <label class="radio-inline__label small" for="item-3">
-                            <i class="fas fa-exclamation"></i> <br> Not at all
-                            </label>
-                        </div>
-                            <!-- <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="mastery" id="comp" value="CMP">
-                                <label for="comp" class="custom-control-label">Comp.</label>
-                                <input type="radio" class="custom-control-input" name="mastery" id="OTW" value="OTW">
-                                <label for="OTW" class="custom-control-label">On the Way.</label>
-                                <input type="radio" class="custom-control-input" name="mastery" id="NY" value="NY">
-                                <label for="NY" class="custom-control-label">Not Yet</label>
-
-                            </div> -->
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="align-middle">sky</td>
-                        <td class="align-middle">Noun</td>
-                        <td class="align-middle">*</td>
-                        <td class="align-middle">空</td>
-                        <td class="align-middle">b ~</td>
-                        <td class="align-middle">What a beautiful sky!</td>
-                        <!-- <td class="align-middle">AAA</td> -->
-                        <td class="align-middle">
-                            <a href="editWord.php">Edit</a>
-                            <a href="#">Delete</a>
-                        </td>
-                        <td class="p-0 align-middle ">
-                        <div class="d-flex justify-content-around tabSwitch mr-0 bg-white  text-center px-0 " id="tabSwitch">
-                    
-                            <input id="item-1" class=" radio-inline__input tex" type="radio" name="accessible-radio2" value="item-1" checked="checked"/>
-                            <label class="radio-inline__label small" for="item-1">
-                            <i class="fas fa-thumbs-up"></i> <br> Complete
-                            </label>
-                            <input id="item-2" class="radio-inline__input" type="radio" name="accessible-radio2" value="item-2"/>
-                            <label class="radio-inline__label small" for="item-2">
-                            <i class="fas fa-check-double"></i> <br> Studying
-                            </label>
-                            <input id="item-3" class="radio-inline__input" type="radio" name="accessible-radio2" value="item-3"/>
-                            <label class="radio-inline__label small" for="item-3">
-                            <i class="fas fa-exclamation"></i> <br> Not at all
-                            </label>
-                        </div>
-                            <!-- <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="mastery" id="comp" value="CMP">
-                                <label for="comp" class="custom-control-label">Comp.</label>
-                                <input type="radio" class="custom-control-input" name="mastery" id="OTW" value="OTW">
-                                <label for="OTW" class="custom-control-label">On the Way.</label>
-                                <input type="radio" class="custom-control-input" name="mastery" id="NY" value="NY">
-                                <label for="NY" class="custom-control-label">Not Yet</label>
-
-                            </div> -->
-                        </td>
-                    </tr>
 
 
 
+                <?php
+                while ($userDetails = $userList->fetch_assoc()) {
+                ?>
+                    <tbody>
+                        <tr class="row text-center mx-0">
+                            <td class="col-1 align-middle text-left">
+                                <strong><?= $userDetails['sel_word'] ?></strong>　
+                                <br>
+                                <span class="small">(<?= $userDetails['sel_pronunciation'] ?>)</span>
+                            </td>
+                            <td class="col-1 align-middle"><?= $userDetails['sel_PoS'] ?></td>
+                            <td class="col-3 align-middle text-left">
+                                <strong><?= $userDetails['sel_e_meaning'] ?></strong> 
+                                <br>
+                                (<?= $userDetails['sel_m_meaning'] ?>)
+                            </td>
 
-                    <!-- <?php
-                        // $result = getFromTables();
-                        while($row = $result->fetch_assoc()){
-                    ?> -->
-                    <tr>
-                        <!-- <td><?php print_r($row); ?></td> -->
-                        <td><?= $row['title'] ?></td>
-                        <td><?= $row['author'] ?></td>
-                        <td><?= $row['date_posted'] ?></td>
-                        <td><?= $row['category'] ?></td>
-                        <td><a class="btn btn-outline-dark rounded-pill font-weight-bold px-4" href="./viewPost.php?id=<?=$row['post_id']?> "><i class="fas fa-angle-double-right" ></i> View</a></td>
-                    </tr>
-                    <!-- <?php
-                    }
-                    ?> -->
-                </tbody>
+                            <td class="col-3 align-middle text-left">
+                                <strong><?= $userDetails['sel_e_sentence'] ?></strong> 
+                                <br>
+                                (<?= $userDetails['sel_m_sentence'] ?>)
+                            </td>
+                            <!-- <td class="align-middle">AAA</td> -->
+                            <td class="col-1 align-middle text-center">
+                                <a href="editWord.php?selWord=<?= $user->escapeString($userDetails['sel_word'])  ?>">Edit</a>
+                                <br>
+                                <a href="../actions/deleteTheWord.php?selWord=<?= $user->escapeString($userDetails['sel_word']) ?>">Delete</a>
+                            </td>
+                            <td class="col-3 p-0 d-flex align-items-center justify-content-around  tabSwitch mr-0 px-0" id="tabSwitch">
+
+
+
+                                <!-- <div> -->
+                                <!-- <input id="item-1-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['id'] ?>]" value="C"  -->
+                                <input id="item-1-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="C" 
+                                <?php if ($userDetails['mastery'] == 'C') {echo "checked";} ?> >
+                                <label class="small" style="margin-left: -20px;" for="item-1-<?= $userDetails['id'] ?>">
+                                    <i class="fas fa-thumbs-up"></i> <br> Complete
+                                </label>
+                                <!-- </div> -->
+
+                                <!-- <div> -->
+                                <!-- <input id="item-2-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['id'] ?>]" value="S"  -->
+                                <input id="item-2-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="S" 
+                                <?php if ($userDetails['mastery'] == 'S') {echo "checked";} ?> >
+                                <label class=" small" style="margin-left: -20px;" for="item-2-<?= $userDetails['id'] ?>">
+                                    <i class="fas fa-check-double"></i> <br> Studying
+                                </label>
+                                <!-- </div> -->
+
+                                <!-- radio-inline__input radio-inline__label , personal_list[<?= $userDetails['id'] ?>]-->
+
+                                <!-- <div> -->
+                                <!-- <input id="item-3-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['id'] ?>]" value="N"  -->
+                                <input id="item-3-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="N" 
+                                <?php if ($userDetails['mastery'] == 'N') {echo "checked";} ?> >
+                                <label class="small" style="margin-left: -20px;" for="item-3-<?= $userDetails['id'] ?>">
+                                    <i class="fas fa-exclamation"></i> <br> Not at all
+                                </label>
+                                <!-- </div> -->
+                                <input type="text" name="hiddenWord" value="<?= $userDetails['sel_word'] ?>" hidden>
+                            </td>
+                        </tr>
+                    <?php
+                }
+                    ?>
+
+                    </tbody>
 
             </table>
         </div>
-
+    </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

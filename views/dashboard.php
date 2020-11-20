@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if(!$_SESSION['id']){
+    header("location: loginRedirect.php");
+    exit;
+}
+
+
 include_once "../classes/user.php";
 
 $user = new User;
@@ -33,17 +39,16 @@ $userList = $user->getUsers();
         </p>
 
         <div class="container">
-            <table class="table table-striped small text-center">
+            <table class="table table-striped small text-center table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>User ID</th>
                         <th>User</th>
+                        <th>Username</th>
                         <th>Nationality</th>
                         <th>Mother Tongue</th>
                         <th>Student</th>
                         <th>Role</th>
-                        
-                        <!-- <th># of Words</th> -->
                         <th></th>
                     </tr>
                 </thead>
@@ -55,37 +60,26 @@ $userList = $user->getUsers();
 
                     <tr>
                         <td><?= $userDetails['id'] ?></td>
+                        <td><?= $userDetails['first_name']."&emsp;".$userDetails['last_name']; ?></td>
                         <td><?= $userDetails['username'] ?></td>
                         <td><?= $userDetails['nationality'] ?></td>
                         <td><?= $userDetails['mother_tongue'] ?></td>
                         <td><?= $userDetails['student'] ?></td>
                         <td><?= $userDetails['role'] ?></td>
-                        
-                        <!-- <td></td> -->
-                        <td><a href="editUser.php?id=<?= $userDetails['id'] ?>"><i class="fas fa-angle-double-right" ></i>Edit user</a></td>
+
+                        <td>
+                            <a class="" href="./editUser.php?userID=<?= $userDetails['id'] ?>">Edit</a>
+                            <br>
+                            <a class="text-danger" href="../actions/deleteUser.php?userID=<?= $userDetails['id'] ?>"></i>Delete</a>
+                        </td>
+
+                        <!-- <i class="fas fa-angle-double-right" ></i> -->
                     </tr>
 
                     <?php
                         }
                     ?>
 
-
-
-                    <!-- <?php
-                        // $result = getFromTables();
-                        while($row = $result->fetch_assoc()){
-                    ?> -->
-                    <tr>
-                        <!-- <td><?php print_r($row); ?></td> -->
-                        <td><?= $row['title'] ?></td>
-                        <td><?= $row['author'] ?></td>
-                        <td><?= $row['date_posted'] ?></td>
-                        <td><?= $row['category'] ?></td>
-                        <td><a class="btn btn-outline-dark rounded-pill font-weight-bold px-4" href="./viewPost.php?id=<?=$row['post_id']?> "><i class="fas fa-angle-double-right" ></i> View</a></td>
-                    </tr>
-                    <!-- <?php
-                    }
-                    ?> -->
                 </tbody>
 
             </table>

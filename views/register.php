@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="card w-25 my-5 mx-auto border-0">
+    <div class="card my-5 mx-auto" style="width: 35%;">
         <div class="card-header bg-white border-0">
             <h1 class="text-center">REGISTER</h1>
         </div>

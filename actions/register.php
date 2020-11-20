@@ -10,6 +10,8 @@ $nationality = $_POST['nationality'];
 $MT = $_POST['MT'];
 $studentYN = $_POST['studentYN'];
 
+$origin = $_POST['btnRegister'];
+
 $user = new User;
-$user->createUser($firstName,$lastName,$username,$passw,$nationality,$MT,$studentYN);
+$user->createUser($origin,$firstName,$lastName,$username,$passw,$nationality,$MT,$studentYN);
 
