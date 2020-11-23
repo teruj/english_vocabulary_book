@@ -26,8 +26,8 @@
             <ul class="navbar-nav">
                 <li class="nav-item mr-5 ml-1"><a href="./dashboard.php" class="nav-link text-white"><?php if($_SESSION['role'] == 'A'){echo "Dashboard";}  ?> </a></li>
                 <li class="nav-item mr-5"><a href="./userTopList.php" class="nav-link text-white">My Word List</a></li>
-                <li class="nav-item"><a href="./addNewWord.php" class="nav-link text-white">Add New Word</a></li>
-                <li class="nav-item"><a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" class="nav-link text-dark">trial</a></li>
+                <li class="nav-item mr-5"><a href="./addNewWord.php" class="nav-link text-white">Add New Word</a></li>
+                <li class="nav-item"><a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" class="nav-link text-white">Word Quiz</a></li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

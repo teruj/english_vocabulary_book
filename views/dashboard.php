@@ -73,7 +73,6 @@ $userList = $user->getUsers();
                             <a class="text-danger" href="../actions/deleteUser.php?userID=<?= $userDetails['id'] ?>"></i>Delete</a>
                         </td>
 
-                        <!-- <i class="fas fa-angle-double-right" ></i> -->
                     </tr>
 
                     <?php

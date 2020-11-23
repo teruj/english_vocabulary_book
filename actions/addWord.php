@@ -18,5 +18,3 @@ $user = new User;
 
 
 $user->addNewWord($word,$PoS,$pronunciation,$eMean,$mMean,$eSentence,$mSentence,$mastery);
-
-// MASTERY!

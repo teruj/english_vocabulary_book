@@ -69,7 +69,7 @@ if(!$_SESSION['id']){
 
 <?php include "navBar.php"; ?>
 
-    <form action="../actions/addWord.php" method="post">     
+    <form action="../actions/addWord.php" method="post">
         <div class="container row mx-auto" style="width: 95%;">
             <div style="height: 220px;" class="col-12 row rounded  bg-danger px-0 mt-5 mb-0 mx-auto ">
 

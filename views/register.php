@@ -49,8 +49,6 @@
                         <label for="sNo" class="costom-control-label">No</label>
                     </div>
                 </div>
-                
-                
 
                 <button type="submit" class="mt-3 btn btn-success btn-block" name="btnRegister" value="register">Register</button>
             </form>

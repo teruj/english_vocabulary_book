@@ -7,9 +7,8 @@ if(!$_SESSION['id']){
 }
 
 
-
-
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -61,15 +60,12 @@ if(!$_SESSION['id']){
                         <label for="sNo" class="costom-control-label">No</label>
                     </div>
                 </div>
-                
-                
 
                 <button type="submit" class="d-block w-50 mx-auto mt-5 btn btn-success rounded-pill" name="btnRegister" value="addUser">Add New User</button>
 
                 <button type="button" name="" class="d-block mt-4 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button>
             </form>
 
-       
         </div>
     </div>
 

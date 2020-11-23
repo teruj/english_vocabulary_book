@@ -96,15 +96,15 @@ if(isset($_POST['sortType'])){
                
             </p>
             <table class="table table-striped table-bordered small">
-                
-            
+
+
                 <thead class="table-dark text-center px-0">
                     <tr class="row align-middle mx-0">
 
                         <form action="" method="post">
                             <th class="col-1 align-middle mt-1 border-0">
-                                <p class="mb-3">Word</p> 
-                                
+                                <p class="mb-3">Word</p>
+
                                 <!-- <a href="../actions/sortByWord.php?sortType=ASC" class="btn btn-sm">ASC</a>
                                 <a href="../actions/sortByWord.php?sortType=DESC" class="btn btn-sm">DESC</a> -->
                                 <button name="sortType" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">

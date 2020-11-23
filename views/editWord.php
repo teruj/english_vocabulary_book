@@ -37,20 +37,17 @@ $theWordArray = $theWord->getTheWord($myWord);
         <div class="container row mx-auto" style="width: 95%;">
             <div style="height: 220px;" class="col-12 row rounded  bg-success px-0 mt-5 mb-0 mx-auto ">
                 <div class="col-5 h-50  align-self-center my-0 px-2 mx-auto">
-                    
+
                         <div class="d-flex h-100 bg-white p-0 py-2 mx-auto text-center rounded">
 
-                            
+
                             <p class="w-100 m-0 mt-2 font-weight-bold align-self-center" style="font-size: 40px;"><?= $theWordArray['sel_word'] ?></p>
-                            
-                            
-                        
-                    
+
                             <input type="hidden" class="form-control-lg d-block h-25 w-100 text-center font-weight-bold align-self-center" name="word" required   id="newWord" style="font-size: 35px;" value="<?= $theWordArray['sel_word'] ?>">
-                        
+
                         </div>
-                
-                    
+
+
                 </div>
 
                 <div class="col-6 row mx-auto bg-white h-50 text-center pl-0 pr-0 align-self-center rounded " id="">

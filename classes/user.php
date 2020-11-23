@@ -198,13 +198,13 @@ class User extends Database{
 
     public function getTheWord($myWord){
         $sql = "SELECT * FROM personal_list WHERE sel_word = '$myWord' AND `user_id` = $_SESSION[id] ";
-    
+
         if($result = $this->conn->query($sql)){
             return $result->fetch_assoc();
         }else{
             die("Error: ".$this->conn->error);
         }
-    
+
     }
 
     public function deleteTheWord($theWord){
@@ -247,35 +247,69 @@ class User extends Database{
             die("Error:Confirm password is not the same.".$this->conn->error);
         }
 
-        
     }
 
-    // public function quizForDummy(){
-    //     $sql = "SELECT word,m_meaning FROM words ";
 
-    //     if($result = $this->conn->query($sql)){
-    //         return $result;
-    //     }else{
-    //         die("Error: ".$this->conn->error);
-    //     }
-    // }
-    public function quizForDummy(){
-        $sql = "SELECT word,m_meaning FROM words ";
-
-        if($result = $this->conn->query($sql)){
-            return $result;
-        }else{
-            die("Error: ".$this->conn->error);
-        }
-    }
-
-    public function quizAnsWord($userID){
+    public function forQuizArray($userID){
         // $sql = "SELECT sel_word,sel_m_meaning FROM personal_list WHERE `user_id` = '$userID'" ;
         $sql = "SELECT sel_word,sel_m_meaning FROM personal_list WHERE `user_id` = '$userID' " ;
         if($result = $this->conn->query($sql)){
-            return $result;
+            $arrayForAns = $result->fetch_all();
+            // $this->escapeString($arrayForAns);
+            $randForAns = array_rand($arrayForAns);
+
+            // echo $randForAns;
+            // echo "<br>";
+            // print_r($arrayForAns);
+
+            $arrayForQuiz[] = $arrayForAns[$randForAns];
+            $answerWord = $arrayForAns[$randForAns][0];
+            $answerWord = $this->escapeString($answerWord);
+            $answerMeaning = $arrayForAns[$randForAns][1];
+
+            $sql = "SELECT word,m_meaning FROM words WHERE word != '$answerWord' ";
+            if($result = $this->conn->query($sql)){
+                $arrayDummy = $result->fetch_all();
+                // $this->escapeString($arrayDummy);
+                $randForDummy = array_rand($arrayDummy,3);
+                $arrayForQuiz[] = $arrayDummy[$randForDummy[0]] ;
+                $arrayForQuiz[] = $arrayDummy[$randForDummy[1]] ;
+                $arrayForQuiz[] = $arrayDummy[$randForDummy[2]] ;
+
+                shuffle($arrayForQuiz);
+
+                return [$answerWord,$answerMeaning,$arrayForQuiz];
+            }else{
+                die("Error:for dummy ".$this->conn->error);
+            }
+
         }else{
-            die("Error: ".$this->conn->error);
+            die("Error:for ans ".$this->conn->error);
+        }
+    }
+
+    public function QuizAnswer($option){
+        $theWord = $_POST['theWord'];
+        if($theWord == $option){
+            echo "bg-info";
+        }else{
+            echo "bg-danger";
+        }
+    }
+
+
+    public function displayColor($selected,$answer){
+        if($selected == $answer){
+            echo "<p class='text-primary font-weight-bold' >(Your answer is correct !!)<br><br>$selected ";
+        }else{
+            echo "<p class='text-dark' >(Your answer is wrong.)<br>
+            $selected ";
+        }
+    }
+
+    public function displayCorrect($selected,$answer){
+        if($selected != $answer){
+            echo "(Correct answer is)<br>".$answer;
         }
     }
 
