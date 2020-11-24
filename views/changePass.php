@@ -37,10 +37,9 @@ $userID = $_GET['userID'];
         </div>
         <div class="card-body">
             <form action="../actions/changePass.php" method="post">
-            <!-- <form action="../actions/changePass.php?userID=<?=$userID?>" method="post"> -->
 
-
-                <input type="hidden" name="userID" value="<?=$userID?>">
+                <!-- <input type="text" hidden name="userID" value="<?=$userID?>"> -->
+                <input type="text" hidden name="userID" value="<?=$userID?>">
 
 
                 <label for="passw">New password</label>

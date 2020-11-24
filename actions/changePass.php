@@ -7,13 +7,19 @@ if(!$_SESSION['id']){
 
 include_once "../classes/user.php";
 
-$userID = $_POST['userID'];
+$ID = $_POST['userID'];
 
 $password = $_POST['passw'];
 $cPassword = $_POST['cPassw'];
 
+// echo $ID;
+// echo "<br>";
+// echo $password;
+// echo "<br>";
+// echo $cPassword;
+
 $user = new User;
 
-$user->changePass($userID,$password,$cPassword);
+$user->changePass($ID,$password,$cPassword);
 
 ?>

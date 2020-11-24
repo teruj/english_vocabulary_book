@@ -157,11 +157,28 @@ class User extends Database{
         }
     }
 
-    public function getMyOrderedList($sortType){
-        if($sortType == 'ASC'){
+    public function getMyOrderedWords($sortWord){
+        if($sortWord == 'ASC'){
             $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] ORDER BY sel_word ASC";
-        }elseif($sortType == 'DESC'){
+        }elseif($sortWord == 'DESC'){
             $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] ORDER BY sel_word DESC";
+        }else{
+            die("Error: sql".$this->conn->error);
+        }
+
+
+        if ($result = $this->conn->query($sql)) {
+            return $result;
+        } else {
+            die("Error: query" . $this->conn->error);
+        }
+    }
+
+    public function getMyOrderedPoS($sortPoS){
+        if($sortPoS == 'ASC'){
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] ORDER BY sel_PoS ASC";
+        }elseif($sortPoS == 'DESC'){
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] ORDER BY sel_PoS DESC";
         }else{
             die("Error: sql".$this->conn->error);
         }
@@ -186,15 +203,6 @@ class User extends Database{
             exit;
 
     }
-    // public function updateUserTopList($mastery){
-    //     foreach($mastery as $key => $eachMastery){
-    //         $sql = "UPDATE personal_list SET mastery = '$eachMastery' WHERE id = '$key' ";
-    //         $this->conn->query($sql);
-    //     }
-    //     header("location: ../views/userTopList.php");
-    //     exit;
-
-    // }
 
     public function getTheWord($myWord){
         $sql = "SELECT * FROM personal_list WHERE sel_word = '$myWord' AND `user_id` = $_SESSION[id] ";
@@ -222,23 +230,35 @@ class User extends Database{
         $sql = "DELETE FROM users WHERE id = $userID ";
 
         if($this->conn->query($sql)){
-            header("location: ../views/dashboard.php");
-            exit;
+            $sql = "DELETE FROM personal_list WHERE `user_id` = $userID";
+
+            if($this->conn->query($sql)){
+                if($_SESSION['id'] == $userID){
+                    header("location: ../views/logout.php");
+                    exit;
+                }else{
+                    header("location: ../views/dashboard.php");
+                    exit;
+                }
+            }else{
+                die("Error: deleting the user 2".$this->conn->error);
+            }
+
         }else{
-            die("Error: deleting the user");
+            die("Error: deleting the user 1".$this->conn->error);
         }
     }
 
 
-    public function changePass($userID,$password,$cPassword){
+    public function changePass($ID,$password,$cPassword){
         if($password == $cPassword){
 
             $password = password_hash($password,PASSWORD_DEFAULT);
 
-            $sql = "UPDATE users SET passw = '$password' WHERE id = $userID ";
+            $sql = "UPDATE users SET passw = '$password' WHERE id ='$ID'";
 
             if($this->conn->query($sql)){
-                header("location: ../views/editUser.php?userID=$userID");
+                header("location: ../views/editUser.php?userID=$ID");
                 exit;
             }else{
                 die("Error:Password is not uploaded.".$this->conn->error);
@@ -300,20 +320,16 @@ class User extends Database{
 
     public function displayColor($selected,$answer){
         if($selected == $answer){
-            echo "<p class='text-primary font-weight-bold' >(Your answer is correct !!)<br><br>$selected ";
+            echo "<p class='text-primary font-weight-bold' ><span class='h4'>Your answer is correct !!</span><br><br><span class='h3'><i class=\"far fa-check-circle\"></i>$selected</span> ";
         }else{
-            echo "<p class='text-dark' >(Your answer is wrong.)<br>
-            $selected ";
+            echo "<p class='text-dark mb-4' >(Your answer is wrong.)<br><i class=\"fas fa-times-circle\"></i>$selected </p>";
         }
     }
 
     public function displayCorrect($selected,$answer){
         if($selected != $answer){
-            echo "(Correct answer is)<br>".$answer;
+            echo "<p class='text-danger mb-0'>(Correct answer is)</p><p class='h3 pl-1 text-danger font-weight-bold mt-2'><i class=\"far fa-check-circle\"></i>".$answer."</p>";
         }
     }
 
 }
-
-// $password = password_hash($password, PASSWORD_DEFAULT);
-// password_verify($password,$XXX['password']);

@@ -34,20 +34,24 @@ $answer =trim($_POST['answer']);
 
     <div class="card w-50 mt-5 mx-auto">
         <div class="card-header">
-            <h1 class="h3"><?= $theWord ?></h1>
+            <h1 class="h1 text-center"><?= $theWord ?></h1>
         </div>
         <div class="card-body px-4">
-            <?php $quiz->displayColor($selected,$answer)?>
+            <div class="mt-4 w-75 mx-auto">
+                <?php $quiz->displayColor($selected,$answer)?>
 
-            <p class="text-danger font-weight-bold"><?php $quiz->displayCorrect($selected,$answer) ?></p>
+                <?php $quiz->displayCorrect($selected,$answer) ?>
+            </div>
+
+            
 
 
         </div>
 
         <div class="link mx-auto p-2">
-            <a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" name="back" class="btn btn-success rounded-pill form-control my-1">Next Word Quiz</a>
+            <a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" name="back" class="btn btn-success rounded-pill form-control my-2">Next Word Quiz</a>
 
-            <button type="button" name="" class="btn  btn-outline-dark rounded-pill form-control my-1" onclick="history.back()">Back</button>
+            <button type="button" name="" class="btn  btn-outline-dark rounded-pill form-control my-2" onclick="history.back()">Back</button>
         </div>
 
 

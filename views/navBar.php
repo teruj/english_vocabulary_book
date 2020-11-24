@@ -14,8 +14,8 @@
 <body>
 
     <nav class="navbar navbar-dark bg-primary navbar-expand-lg">
-        <!-- <a href="#" class="navbar-brand"><h1>TITLE</h1></a> -->
-        <h1 class="text-white mr-4">TITLE</h1>
+        <a href="<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>" class="navbar-brand"><h1>TITLE</h1></a>
+
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
@@ -27,7 +27,7 @@
                 <li class="nav-item mr-5 ml-1"><a href="./dashboard.php" class="nav-link text-white"><?php if($_SESSION['role'] == 'A'){echo "Dashboard";}  ?> </a></li>
                 <li class="nav-item mr-5"><a href="./userTopList.php" class="nav-link text-white">My Word List</a></li>
                 <li class="nav-item mr-5"><a href="./addNewWord.php" class="nav-link text-white">Add New Word</a></li>
-                <li class="nav-item"><a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" class="nav-link text-white">Word Quiz</a></li>
+                <li class="nav-item"><a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" class="nav-link text-white">Quiz for you</a></li>
             </ul>
 
             <ul class="navbar-nav ml-auto">

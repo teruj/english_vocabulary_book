@@ -36,39 +36,41 @@ $quiz = $user->forQuizArray($userID);
 <div class="card mt-5 w-50 mx-auto">
     <form action="./quizAnswer.php" method="post">
         <div class="card-header">
-            <h1 class="h3"><?= stripslashes($quiz[0])   ?></h1>
+            <h1 class="h1 text-center"><?= stripslashes($quiz[0])   ?></h1>
         </div>
         <div class="card-body">
 
-
-        <input type="text" hidden name="theWord" value="<?=stripslashes($quiz[0])
-        ?> ">
-        <input type="text" hidden name="answer" value="<?=$quiz[1]?> ">
-
+            <div class="mt-4 w-75 mx-auto">
+                <input type="text" hidden name="theWord" value="<?=stripslashes($quiz[0])?> ">
+                <input type="text" hidden name="answer" value="<?=$quiz[1]?> ">
 
 
-            <div class="custom-control custom-radio ">
-                <input type="radio" class="custom-control-input" id="w1" name="selMeaning" value="<?= $quiz[2][0][1] ?>">
-                <label for="w1" class="custom-control-label"><?=$quiz[2][0][1]?></label>
+
+                <div class="custom-control custom-radio mb-3">
+                    <input type="radio" class="custom-control-input" id="w1" name="selMeaning" value="<?= $quiz[2][0][1] ?>">
+                    <label for="w1" class="custom-control-label"><?=$quiz[2][0][1]?></label>
+                </div>
+
+                <div class="custom-control custom-radio mb-3">
+                    <input type="radio" class="custom-control-input" id="w2" name="selMeaning" value="<?= $quiz[2][1][1] ?>">
+                    <label for="w2" class="custom-control-label"><?=$quiz[2][1][1]?></label>
+                </div>
+
+                <div class="custom-control custom-radio mb-3">
+                    <input type="radio" class="custom-control-input" id="w3" name="selMeaning" value="<?=$quiz[2][2][1]?>">
+                    <label for="w3" class="custom-control-label"><?=$quiz[2][2][1]?></label>
+                </div>
+
+                <div class="custom-control custom-radio mb-3">
+                    <input type="radio" class="custom-control-input" id="w4" name="selMeaning" value="<?=$quiz[2][3][1]?>">
+                    <label for="w4" class="custom-control-label"><?=$quiz[2][3][1]?></label>
+                </div>
+
+                <button type="submit" class="btn btn-success mt-5 rounded-pill d-block mx-auto" name="btnAns">submit</button>
+
             </div>
 
-            <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="w2" name="selMeaning" value="<?= $quiz[2][1][1] ?>">
-                <label for="w2" class="custom-control-label"><?=$quiz[2][1][1]?></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="w3" name="selMeaning" value="<?=$quiz[2][2][1]?>">
-                <label for="w3" class="custom-control-label"><?=$quiz[2][2][1]?></label>
-            </div>
-
-            <div class="custom-control custom-radio">
-                <input type="radio" class="custom-control-input" id="w4" name="selMeaning" value="<?=$quiz[2][3][1]?>">
-                <label for="w4" class="custom-control-label"><?=$quiz[2][3][1]?></label>
-            </div>
-
-            <button type="submit" class="btn btn-success mt-3 rounded-pill d-block mx-auto" name="btnAns">submit</button>
-
+            
         </div>
     </form>
 

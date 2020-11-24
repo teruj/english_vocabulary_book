@@ -11,12 +11,17 @@ $user = new User;
 $userList = $user->getMyList();
 
 
-if(isset($_POST['sortType'])){
-    $sortType = $_POST['sortType'];
+if(isset($_POST['sortWord'])){
+    $sortWord = $_POST['sortWord'];
 
-    // echo $sortType;
+    $userList = $user->getMyOrderedWords($sortWord);// no need 'return $userList' ;
 
-    $userList = $user->getMyOrderedList($sortType);// no need 'return $userList' ;
+}
+
+if(isset($_POST['sortPoS'])){
+    $sortPoS = $_POST['sortPoS'];
+
+    $userList = $user->getMyOrderedPoS($sortPoS);// no need 'return $userList' ;
 
 }
 
@@ -105,16 +110,23 @@ if(isset($_POST['sortType'])){
                             <th class="col-1 align-middle mt-1 border-0">
                                 <p class="mb-3">Word</p>
 
-                                <!-- <a href="../actions/sortByWord.php?sortType=ASC" class="btn btn-sm">ASC</a>
-                                <a href="../actions/sortByWord.php?sortType=DESC" class="btn btn-sm">DESC</a> -->
-                                <button name="sortType" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
-                                <?php if($sortType == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
-                                <button name="sortType" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
-                                DESC<?php if($sortType == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
+                                <button name="sortWord" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
+                                <?php if($sortWord == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
+                                <button name="sortWord" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
+                                DESC<?php if($sortWord == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
+                            </th>
+                        
+
+                            <th class="col-1 align-middle mt-1 border-0 ">
+                            <p class="mb-3">PoS</p>
+
+                                <button name="sortPoS" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
+                                <?php if($sortPoS == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
+                                <button name="sortPoS" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
+                                DESC<?php if($sortPoS == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
+
                             </th>
                         </form>
-
-                        <th class="col-1 align-middle mt-1 border-0 ">PoS</th>
                         <th class="col-3 align-middle border-0">
                             Meaning 
                             <br>

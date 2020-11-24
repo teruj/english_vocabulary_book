@@ -75,7 +75,7 @@ if(!$_SESSION['id']){
 
                 <div class="col-5 row h-50 align-self-center m-0">
                     <div class="row h2 h-100 px-2 text-center  mx-auto">
-                    <input type="text" class="form-control-lg d-block h-75 w-100 text-center font-weight-bold align-self-center" name="word"  required autofocus placeholder="Input new word!" id="newWord" style="font-size: 35px;">
+                    <input type="text" class="form-control-lg d-block h-75 w-100 text-center font-weight-bold align-self-center" name="word"  required autofocus placeholder="ex. wonderful*" id="newWord" style="font-size: 35px;">
                     </div>
                 </div>
 
@@ -101,14 +101,14 @@ if(!$_SESSION['id']){
                 <div class="card col-6 pt-4 mt-0">
                     <label for="PoS" class="ml-5">Part of Speech</label>
                     <div class="input-group mb-2 mb-3 w-75 mx-auto">
-                        <input type="text" id="PoS" name="PoS" class="form-control-lg d-block w-100" maxlength="100">
+                        <input type="text" id="PoS" name="PoS" class="form-control-lg d-block w-100" placeholder="ex. adj" maxlength="100">
                     </div>
                 </div>
 
                 <div class="card col-6 pt-4 px-4 mt-0">
                     <label for="pronunciation" class="">Pronunciation</label>
                     <div class="input-group mb-5 w-75 mx-auto">
-                        <input type="text" id="pronunciation" name="pronunciation" placeholder="" class="form-control-lg d-block w-100" maxlength="100">
+                        <input type="text" id="pronunciation" name="pronunciation" placeholder="ex. wˈʌndɚf(ə)l" class="form-control-lg d-block w-100" maxlength="100">
                     </div>
                 </div>
 
@@ -116,21 +116,21 @@ if(!$_SESSION['id']){
                     <div class="col-12">
                         <label for="eMean">English Meaning</label>
                         <div class="input-group mb-3">
-                            <input type="text" id="eMean" name="eMean" class="form-control-lg d-block ml-1 w-100" placeholder="English meaning" maxlength="255">
+                            <input type="text" id="eMean" name="eMean" class="form-control-lg d-block ml-1 w-100" placeholder="ex. extraordinarily good or great" maxlength="255">
                         </div>
 
-                        <label for="mMean">Mother Tongue Meaning</label>
+                        <label for="mMean">Mother Tongue Meaning*</label>
                         <div class="input-group mb-5">
-                            <input type="text" id="mMean" name="mMean" class="form-control-lg d-block ml-1 w-100" placeholder="(meaning)" maxlength="255">
+                            <input type="text" id="mMean" name="mMean" class="form-control-lg d-block ml-1 w-100" placeholder="例：非常に良い、非常に大きい" maxlength="255" required>
                         </div>
                     </div>
 
                     <div class="col-12 ">
 
                         <label for="">Example</label>
-                        <textarea style="border:2px solid;"  class="form-control-lg d-block mb-1 w-100" name="eSentence" id="eSentence" cols="" rows="" placeholder="English example"></textarea>
+                        <textarea style="border:2px solid;"  class="form-control-lg d-block mb-1 w-100" name="eSentence" id="eSentence" cols="" rows="" placeholder="ex. We had wonderful weather during the holidays."></textarea>
 
-                        <textarea style="border:2px solid" class="form-control-lg d-block mb-5 w-100 " name="mSentence"    id="mSentence" cols="" rows="" placeholder="(Sentence meaning)"></textarea>
+                        <textarea style="border:2px solid" class="form-control-lg d-block mb-5 w-100 " name="mSentence"    id="mSentence" cols="" rows="" placeholder="例：休暇中はすばらしいお天気だった。"></textarea>
 
                         <div class="d-flex justify-content-around mb-5">
                             <button type="submit" name="submit" class=" w-50 btn btn-lg btn-danger rounded-pill form-control">New word  &ensp;  submit</button>

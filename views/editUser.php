@@ -79,8 +79,12 @@ $userInfo = $user->getUser($userID);
                     <button type="submit" class="d-block w-50 mx-auto mt-5 mb-4 btn btn-success rounded-pill" name="btnSave" value="saveChanges">Save changes</button>
 
                     
-                    <?php if($userID == $_SESSION['id']){echo "<a href=\"./changePass.php?userID=".$userInfo."['id']\" class=\"d-block mx-auto w-50 btn btn-sm btn-outline-success form-control rounded-pill\" >Change Password</a>";}?> 
-                    
+                    <?php if($userID == $_SESSION['id']){
+                        $ID = $userInfo['id'];
+                        echo "<a href=\"./changePass.php?userID=$ID\" class=\"d-block w-50 mx-auto mt-2 mb-4 btn btn-outline-success rounded-pill\"  >Change Password</a>";
+                        } 
+                        
+                    ?>
                     <button type="button" name="" class="d-block mt-5 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button>
 
                 </div>
