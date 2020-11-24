@@ -38,18 +38,15 @@ $userID = $_GET['userID'];
         <div class="card-body">
             <form action="../actions/changePass.php" method="post">
 
-                <!-- <input type="text" hidden name="userID" value="<?=$userID?>"> -->
-                <input type="text" hidden name="userID" value="<?=$userID?>">
+                <div class="px-5">
+                    <input type="text" hidden name="userID" value="<?=$userID?>">
 
+                    <label for="passw">New password</label>
+                    <input type="password" name="passw" id="passw" class="form-control mb-2" required>
 
-                <label for="passw">New password</label>
-                <input type="password" name="passw" id="passw" class="form-control mb-2" required>
-
-
-                <label for="cPassw">(Again for confirmation)</label>
-                <input type="password" name="cPassw" id="cPassw" class="form-control mb-5" required>
-
-                    <!-- <a href="../actions/changePass.php" class="d-block w-50 mx-auto mb-4 btn btn-danger rounded-pill form-control">Submit</a> -->
+                    <label for="cPassw">(Again for confirmation)</label>
+                    <input type="password" name="cPassw" id="cPassw" class="form-control mb-5" required>
+                </div>
 
                     <button class="d-block w-50 mx-auto mb-4 btn btn-danger rounded-pill form-control">Submit</button>
 

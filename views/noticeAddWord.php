@@ -34,13 +34,13 @@ $quiz = new User;
         </div> -->
         <div class="card-body px-4">
             <div class="mt-4 w-75 mx-auto">
-                <p class="text-info h5">Sorry, please add more than one new word in your word list at first.</p>
+                <p class="text-danger h5">Sorry, please add more than one new word in your word list at first.</p>
             </div>
 
         </div>
 
-        <div class="link mx-auto p-2">
-            <a href="./addNewWord.php" name="back" class="btn btn-info rounded-pill form-control my-2">Add new word</a>
+        <div class="mx-auto p-2">
+            <a href="./addNewWord.php" name="back" class="btn btn-danger rounded-pill form-control my-2">Add new word</a>
 
             <button type="button" name="" class="btn  btn-outline-dark rounded-pill form-control my-2" onclick="history.back()">Back</button>
         </div>

@@ -13,29 +13,29 @@
 
 <body>
 
-    <div class="card my-5 mx-auto" style="width: 35%;">
+    <div class="card my-5 mx-auto px-4" style="width: 35%;">
         <div class="card-header bg-white border-0">
             <h1 class="text-center">REGISTER</h1>
         </div>
         <div class="card-body">
             <form action="../actions/register.php" method="post">
                 <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" class="form-control mb-2" required autofocus>
+                <input type="text" name="firstName" id="firstName" class="form-control mb-3" required placeholder="ex. Taro" autofocus>
 
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="form-control mb-2" required>
+                <label for="lastName">Last Name*</label>
+                <input type="text" name="lastName" id="lastName" class="form-control mb-3" required placeholder="ex. Tanaka">
 
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-control mb-2" maxlength="15" required placeholder="max length: 15">
+                <label for="username">Username*</label>
+                <input type="text" name="username" id="username" class="form-control mb-3" maxlength="15" required placeholder="max length:15(w/one-byte style)">
 
-                <label for="passw">Password</label>
+                <label for="passw">Password*</label>
                 <input type="password" name="passw" id="passw" class="form-control mb-5" required>
 
-                <label for="nationality">Nationality</label>
-                <input type="text" name="nationality" id="nationality" class="form-control mb-2" required>
+                <label for="nationality">Nationality*</label>
+                <input type="text" name="nationality" id="nationality" class="form-control mb-2" required placeholder="ex. Japanese">
 
-                <label for="MT">Mother Tongue</label>
-                <input type="text" name="MT" id="MT" class="form-control mb-2" required>
+                <label for="MT">Mother Tongue*</label>
+                <input type="text" name="MT" id="MT" class="form-control mb-2" required placeholder="ex. Japanese">
 
                 <label for="studentYN">Student</label>
                 <br>
@@ -50,7 +50,7 @@
                     </div>
                 </div>
 
-                <button type="submit" class="mt-3 btn btn-success btn-block" name="btnRegister" value="register">Register</button>
+                <button type="submit" class="mt-5 btn btn-success btn-block" name="btnRegister" value="register">Register</button>
             </form>
 
             <div class="text-center mt-3 small">

@@ -32,7 +32,7 @@ $userList = $user->getUsers();
 <?php include "navBar.php" ?>
         
 
-        <div class="container">
+        <div class="container-lg">
             <p class="text-center  mt-5">
                 <a class="w-25 btn btn-danger mx-2 px-5 rounded-pill"  href="addNewWord.php"><i class="fas fa-plus" ></i> Add New Word</a>
 
@@ -40,7 +40,7 @@ $userList = $user->getUsers();
 
                 <a class="w-25 btn btn-primary mx-2 px-5 rounded-pill" href="addNewUser.php"><i class="fas fa-plus"></i> Add New User</a>
             </p>
-            <table class="table table-striped text-center table-bordered">
+            <table class="table table-sm table-striped text-center table-bordered table-hover">
                 <thead class="table-dark">
                     <tr>
                         <th>User ID</th>
@@ -79,7 +79,7 @@ $userList = $user->getUsers();
                     <?php
                         }
                     ?>
-
+                    
                 </tbody>
 
             </table>

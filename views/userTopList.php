@@ -93,32 +93,44 @@ if(isset($_POST['sortPoS'])){
 <body>
     <?php include "navBar.php" ?>
 
-        <div class="container mt-5">
+        <div class="container-fluid mt-5">
             <p class="text-center">
                 <a class="w-25 btn btn-info mx-2 px-5 rounded-pill small" href="./quiz.php?userID=<?= $_SESSION['id'] ?>"> Quiz from your list</a>
                 <a class="w-25 btn btn-danger mx-2 px-5 rounded-pill small" href="addNewWord.php"><i class="fas fa-plus"></i> Add New Word</a>
                 <a class="w-25 btn btn-success mx-2 px-5 rounded-pill small" href="./editUser.php?userID=<?= $_SESSION['id'] ?>"><i class="fas fa-user-edit"></i>&emsp; Edit Profile</a>
 
             </p>
-            <table class="table table-striped table-bordered small">
+            <table class="table table-sm table-bordered table-hover">
 
 
                 <thead class="table-dark text-center px-0">
                     <tr class="row align-middle mx-0">
 
                         <form action="" method="post">
-                            <th class="col-1 align-middle mt-1 border-0">
-                                <p class="mb-3">Word</p>
+                            <th class="col-2 align-middle mt-1 border-0">
+                                <div class="mb-1 d-inline-block">
+                                    Word&nbsp;(
+                                    
+                                    <button name="sortWord" value="ASC" class="d-inline-block btn btn-sm btn-light text-primary py-0 px-0 rounded-pill" style="font-size: 4px;"><?php if($sortWord == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i>";} ?>ASC</button>
 
-                                <button name="sortWord" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
-                                <?php if($sortWord == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
+                                    <button name="sortWord" value="DESC" class="d-inline-block  btn btn-sm btn-light text-primary py-0 px-0 rounded-pill" style="font-size: 4px;">DESC<?php if($sortWord == 'DESC'){echo "<i class='fas fa-angle-double-down'></i>";} ?></button>
+                                    )
+                                </div>
 
-                                <button name="sortWord" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
-                                DESC<?php if($sortWord == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
+                                <p class="small mb-1">( pronunciation )</p>
+
+                                <div class="small mb-0">
+                                    (&nbsp;PoS
+                                    <button name="sortPoS" value="ASC" class="d-inline-block btn btn-sm btn-light text-success py-0 px-0 rounded-pill" style="font-size: 4px;"><?php if($sortPoS == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i>";} ?>ASC</button>
+
+                                    <button name="sortPoS" value="DESC" class="d-inline-block btn btn-sm btn-light text-success py-0 px-0 rounded-pill" style="font-size: 4px;">DESC<?php if($sortPoS == 'DESC'){echo "<i class='fas fa-angle-double-down'></i>";} ?></button>
+                                    &nbsp;)
+                                </div>
+
                             </th>
 
 
-                            <th class="col-1 align-middle mt-1 border-0 ">
+                            <!-- <th class="col-1 align-middle mt-1 border-0 ">
                                 <p class="mb-3">PoS</p>
 
                                 <button name="sortPoS" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
@@ -127,7 +139,7 @@ if(isset($_POST['sortPoS'])){
                                 <button name="sortPoS" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
                                 DESC<?php if($sortPoS == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
 
-                            </th>
+                            </th> -->
                         </form>
 
                             <th class="col-3 align-middle border-0">
@@ -139,9 +151,9 @@ if(isset($_POST['sortPoS'])){
 
                             <th class="col-3 align-middle border-0">Example</th>
 
-                            <th class="col-1 align-middle border-0 mt-1">Actions</th>
+                            <th class="col-1 align-middle border-0">Actions</th>
 
-                            <th class="col-3 align-middle border-0 pb-0">
+                            <th class="col-3 align-middle border-0">
                                 Mastery <br>
                                 <span class="small">(your progess for this word)</span>
     <form action="../actions/updateUserTopList.php" method="post">
@@ -150,18 +162,23 @@ if(isset($_POST['sortPoS'])){
                     </tr>
                 </thead>
 
+                
+                <tbody class="">
+                
                 <?php
                 while ($userDetails = $userList->fetch_assoc()) {
                 ?>
-                <tbody>
                     <tr class="row text-center mx-0">
-                        <td class="col-1 align-middle text-left">
-                            <strong><?= $userDetails['sel_word'] ?></strong>　
-                            <br>
-                            <span class="small">(<?= $userDetails['sel_pronunciation'] ?>)</span>
+                        <td class="col-2 text-center">
+                            <div class="">
+                                <h2 class="h3 mb-0"><?= $userDetails['sel_word'] ?></h2>　
+                                <h4 class="h6">(<?= $userDetails['sel_pronunciation'] ?>)</h4>
+                                <h4 class="h6">(<i><?= $userDetails['sel_PoS'] ?></i>)</h4>
+                            </div>
+                            
                         </td>
 
-                        <td class="col-1 align-middle"><?= $userDetails['sel_PoS'] ?></td>
+                        <!-- <td class="col-1 align-middle"><?= $userDetails['sel_PoS'] ?></td> -->
 
                         <td class="col-3 align-middle text-left">
                             <strong><?= $userDetails['sel_e_meaning'] ?></strong>
@@ -215,10 +232,11 @@ if(isset($_POST['sortPoS'])){
                 <?php
                 }
                 ?>
-
+                
                 </tbody>
 
             </table>
+            <?php if($userList->num_rows == 0){ echo "<a href='addNewWord.php' class='btn btn-lg btn-outline-danger d-block w-75 mx-auto mt-5 '>Please add a new word first.<a>"; }  ?>
         </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>

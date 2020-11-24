@@ -60,7 +60,7 @@ $quiz = $user->forQuizArray($userID);
 
 
                 <div class="custom-control custom-radio mb-3">
-                    <input type="radio" class="custom-control-input" id="w1" name="selMeaning" value="<?= $quiz[2][0][1] ?>">
+                    <input type="radio" class="custom-control-input" id="w1" name="selMeaning" value="<?= $quiz[2][0][1] ?>" required>
                     <label for="w1" class="custom-control-label"><?=$quiz[2][0][1]?></label>
                 </div>
 
