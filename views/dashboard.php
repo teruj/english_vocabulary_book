@@ -30,16 +30,17 @@ $userList = $user->getUsers();
 </head>
 <body>
 <?php include "navBar.php" ?>
-        <p class="text-center  mt-5">
-            <a class="btn btn-outline-primary mx-2 px-5 rounded-pill"  href="addNewWord.php"><i class="fas fa-plus" ></i> Add New Word</a>
-
-            <a class="btn btn-outline-success mx-2 px-5 rounded-pill" href="userTopList.php"><i class="fas fa-plus" ></i> Edit My Word List</a>
-
-            <a class="btn btn-outline-danger mx-2 px-5 rounded-pill" href="addNewUser.php"><i class="fas fa-plus"></i> Add New User</a>
-        </p>
+        
 
         <div class="container">
-            <table class="table table-striped small text-center table-bordered">
+            <p class="text-center  mt-5">
+                <a class="w-25 btn btn-danger mx-2 px-5 rounded-pill"  href="addNewWord.php"><i class="fas fa-plus" ></i> Add New Word</a>
+
+                <a class="w-25 btn btn-success mx-2 px-5 rounded-pill" href="userTopList.php"> Edit My Word List</a>
+
+                <a class="w-25 btn btn-primary mx-2 px-5 rounded-pill" href="addNewUser.php"><i class="fas fa-plus"></i> Add New User</a>
+            </p>
+            <table class="table table-striped text-center table-bordered">
                 <thead class="table-dark">
                     <tr>
                         <th>User ID</th>
@@ -68,9 +69,9 @@ $userList = $user->getUsers();
                         <td><?= $userDetails['role'] ?></td>
 
                         <td>
-                            <a class="" href="./editUser.php?userID=<?= $userDetails['id'] ?>">Edit</a>
-                            <br>
-                            <a class="text-danger" href="../actions/deleteUser.php?userID=<?= $userDetails['id'] ?>"></i>Delete</a>
+                            <a class="btn btn-sm btn-outline-success" href="./editUser.php?userID=<?= $userDetails['id'] ?>">Edit</a>
+                            
+                            <a class="btn btn-sm btn-outline-secondary" href="../actions/deleteUser.php?userID=<?= $userDetails['id'] ?>"></i>Delete</a>
                         </td>
 
                     </tr>

@@ -332,4 +332,15 @@ class User extends Database{
         }
     }
 
+    public function noticeAddWord($userID){
+        
+        $sql = "SELECT * FROM personal_list WHERE `user_id` = $userID ";
+        if($result = $this->conn->query($sql)){
+            return $result;
+        }else{
+            die("Error: select user".$this->conn->error);
+        }
+    }
+
+
 }

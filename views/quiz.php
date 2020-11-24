@@ -12,6 +12,19 @@ include_once "../classes/user.php";
 
 $user = new User;
 
+$result = $user->noticeAddWord($userID);
+
+// var_dump($result);
+
+if($result->num_rows == 0){
+    header("location: ./noticeAddWord.php");
+    exit;
+}
+
+
+
+
+
 $quiz = $user->forQuizArray($userID);
 
 ?>
@@ -66,11 +79,12 @@ $quiz = $user->forQuizArray($userID);
                     <label for="w4" class="custom-control-label"><?=$quiz[2][3][1]?></label>
                 </div>
 
-                <button type="submit" class="btn btn-success mt-5 rounded-pill d-block mx-auto" name="btnAns">submit</button>
+                <button type="submit" class="w-50 btn btn-success mt-5 rounded-pill d-block mx-auto" name="btnAns">Answer</button>
+
+                <button type="button" name="" class="d-block mt-4 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button>
 
             </div>
 
-            
         </div>
     </form>
 
@@ -84,10 +98,10 @@ $quiz = $user->forQuizArray($userID);
 </body>
 </html>
 
-<?php
+<!-- <?php
 echo "<br><br>";
 echo $userID."<br><br>";
 
 print_r($quiz);
 
-?>
+?> -->

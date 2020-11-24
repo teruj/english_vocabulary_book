@@ -92,13 +92,13 @@ if(isset($_POST['sortPoS'])){
 
 <body>
     <?php include "navBar.php" ?>
-    
+
         <div class="container mt-5">
-            <p class="text-right small">
-                <a class="btn btn-outline-primary mx-2 px-5 rounded-pill small" href="addNewWord.php"><i class="fas fa-plus"></i> Add New Word</a>
-            
-                <!-- <button class="btn btn-primary mx-2 px-5 rounded-pill small"><i class="fas fa-plus"></i> Save Mastery Change</button> -->
-               
+            <p class="text-center">
+                <a class="w-25 btn btn-info mx-2 px-5 rounded-pill small" href="./quiz.php?userID=<?= $_SESSION['id'] ?>"> Quiz from your list</a>
+                <a class="w-25 btn btn-danger mx-2 px-5 rounded-pill small" href="addNewWord.php"><i class="fas fa-plus"></i> Add New Word</a>
+                <a class="w-25 btn btn-success mx-2 px-5 rounded-pill small" href="./editUser.php?userID=<?= $_SESSION['id'] ?>"><i class="fas fa-user-edit"></i>&emsp; Edit Profile</a>
+
             </p>
             <table class="table table-striped table-bordered small">
 
@@ -112,113 +112,111 @@ if(isset($_POST['sortPoS'])){
 
                                 <button name="sortWord" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
                                 <?php if($sortWord == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
+
                                 <button name="sortWord" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
                                 DESC<?php if($sortWord == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
                             </th>
-                        
+
 
                             <th class="col-1 align-middle mt-1 border-0 ">
-                            <p class="mb-3">PoS</p>
+                                <p class="mb-3">PoS</p>
 
                                 <button name="sortPoS" value="ASC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill" style="font-size: 4px;">
                                 <?php if($sortPoS == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i><br>";} ?>ASC</button>
+
                                 <button name="sortPoS" value="DESC" class="btn btn-sm btn-light text-primary py-0 px-0 w-100 rounded-pill mt-1" style="font-size: 4px;">
                                 DESC<?php if($sortPoS == 'DESC'){echo "<br><i class='fas fa-angle-double-down'></i>";} ?></button>
 
                             </th>
                         </form>
-                        <th class="col-3 align-middle border-0">
-                            Meaning 
-                            <br>
-                            <i class="small">( max:255char. ) </i>
-                            <!-- <span class="small">(English / Mother Tongue)</span> -->
 
-                        </th>
-                        <th class="col-3 align-middle border-0">Example
-                            <!-- <span class="small">(sentence / phrase)</span> -->
+                            <th class="col-3 align-middle border-0">
+                                Meaning
+                                <br>
+                                <i class="small">( max:255char. ) </i>
 
-                        </th>
-                        <!-- <th class="align-middle">Memo</th> -->
-                        <th class="col-1 align-middle border-0 mt-1">Actions</th>
-                        <th class="col-3 align-middle border-0 pb-0">Mastery <br><span class="small">(your progess for this word)
-                            </span> 
+                            </th>
+
+                            <th class="col-3 align-middle border-0">Example</th>
+
+                            <th class="col-1 align-middle border-0 mt-1">Actions</th>
+
+                            <th class="col-3 align-middle border-0 pb-0">
+                                Mastery <br>
+                                <span class="small">(your progess for this word)</span>
     <form action="../actions/updateUserTopList.php" method="post">
-                            <button class="btn btn-sm btn-primary rounded-pill mt-2"><i class="fas fa-plus"></i> Save Mastery Change</button>
-                        </th>
+                                <button class="btn btn-sm btn-primary rounded-pill mt-2"><i class="fas fa-plus"></i> Save Mastery Change</button>
+                            </th>
                     </tr>
                 </thead>
-
-
-
 
                 <?php
                 while ($userDetails = $userList->fetch_assoc()) {
                 ?>
-                    <tbody>
-                        <tr class="row text-center mx-0">
-                            <td class="col-1 align-middle text-left">
-                                <strong><?= $userDetails['sel_word'] ?></strong>　
-                                <br>
-                                <span class="small">(<?= $userDetails['sel_pronunciation'] ?>)</span>
-                            </td>
-                            <td class="col-1 align-middle"><?= $userDetails['sel_PoS'] ?></td>
-                            <td class="col-3 align-middle text-left">
-                                <strong><?= $userDetails['sel_e_meaning'] ?></strong> 
-                                <br>
-                                (<?= $userDetails['sel_m_meaning'] ?>)
-                            </td>
+                <tbody>
+                    <tr class="row text-center mx-0">
+                        <td class="col-1 align-middle text-left">
+                            <strong><?= $userDetails['sel_word'] ?></strong>　
+                            <br>
+                            <span class="small">(<?= $userDetails['sel_pronunciation'] ?>)</span>
+                        </td>
 
-                            <td class="col-3 align-middle text-left">
-                                <strong><?= $userDetails['sel_e_sentence'] ?></strong> 
-                                <br>
-                                (<?= $userDetails['sel_m_sentence'] ?>)
-                            </td>
-                            <!-- <td class="align-middle">AAA</td> -->
-                            <td class="col-1 align-middle text-center">
-                                <a href="editWord.php?selWord=<?= $user->escapeString($userDetails['sel_word'])  ?>">Edit</a>
-                                <br>
-                                <a href="../actions/deleteTheWord.php?selWord=<?= $user->escapeString($userDetails['sel_word']) ?>">Delete</a>
-                            </td>
-                            <td class="col-3 p-0 d-flex align-items-center justify-content-around  tabSwitch mr-0 px-0" id="tabSwitch">
+                        <td class="col-1 align-middle"><?= $userDetails['sel_PoS'] ?></td>
+
+                        <td class="col-3 align-middle text-left">
+                            <strong><?= $userDetails['sel_e_meaning'] ?></strong>
+                            <br>
+                            (<?= $userDetails['sel_m_meaning'] ?>)
+                        </td>
+
+                        <td class="col-3 align-middle text-left">
+                            <strong><?= $userDetails['sel_e_sentence'] ?></strong>
+                            <br>
+                            (<?= $userDetails['sel_m_sentence'] ?>)
+                        </td>
+
+                        <td class="col-1 align-middle text-center">
+                            <a href="editWord.php?selWord=<?= $user->escapeString($userDetails['sel_word'])  ?>" class="btn btn-sm btn-outline-success w-100 px-0 py-0 rounded-pill">Edit</a>
+                            <br>
+                            <a href="../actions/deleteTheWord.php?selWord=<?= $user->escapeString($userDetails['sel_word']) ?>" class="btn btn-sm btn-outline-secondary w-100 px-0 py-0 rounded-pill mt-1">Delete</a>
+                        </td>
+
+                        <td class="col-3 p-0 d-flex align-items-center justify-content-around  tabSwitch mr-0 px-0" id="tabSwitch">
 
 
 
-                                <!-- <div> -->
-                                <!-- <input id="item-1-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['id'] ?>]" value="C"  -->
-                                <input id="item-1-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="C" 
-                                <?php if ($userDetails['mastery'] == 'C') {echo "checked";} ?> >
-                                <label class="small" style="margin-left: -20px;" for="item-1-<?= $userDetails['id'] ?>">
-                                    <i class="fas fa-thumbs-up"></i> <br> Complete
-                                </label>
-                                <!-- </div> -->
+                            <!-- <div> -->
+                            <input id="item-1-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="C" 
+                            <?php if ($userDetails['mastery'] == 'C') {echo "checked";} ?> >
+                            <label class="small" style="margin-left: -20px;" for="item-1-<?= $userDetails['id'] ?>">
+                                <i class="fas fa-thumbs-up"></i> <br> Complete
+                            </label>
+                            <!-- </div> -->
 
-                                <!-- <div> -->
-                                <!-- <input id="item-2-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['id'] ?>]" value="S"  -->
-                                <input id="item-2-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="S" 
-                                <?php if ($userDetails['mastery'] == 'S') {echo "checked";} ?> >
-                                <label class=" small" style="margin-left: -20px;" for="item-2-<?= $userDetails['id'] ?>">
-                                    <i class="fas fa-check-double"></i> <br> Studying
-                                </label>
-                                <!-- </div> -->
+                            <!-- <div> -->
+                            <input id="item-2-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="S" 
+                            <?php if ($userDetails['mastery'] == 'S') {echo "checked";} ?> >
+                            <label class=" small" style="margin-left: -20px;" for="item-2-<?= $userDetails['id'] ?>">
+                                <i class="fas fa-check-double"></i> <br> Studying
+                            </label>
+                            <!-- </div> -->
 
-                                <!-- radio-inline__input radio-inline__label , personal_list[<?= $userDetails['id'] ?>]-->
 
-                                <!-- <div> -->
-                                <!-- <input id="item-3-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['id'] ?>]" value="N"  -->
-                                <input id="item-3-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="N" 
-                                <?php if ($userDetails['mastery'] == 'N') {echo "checked";} ?> >
-                                <label class="small" style="margin-left: -20px;" for="item-3-<?= $userDetails['id'] ?>">
-                                    <i class="fas fa-exclamation"></i> <br> Not at all
-                                </label>
-                                <!-- </div> -->
-                                <input type="text" name="hiddenWord" value="<?= $userDetails['sel_word'] ?>" hidden>
-                            </td>
-                        </tr>
-                    <?php
+                            <!-- <div> -->
+                            <input id="item-3-<?= $userDetails['id'] ?>" class="" type="radio" name="mastery[<?= $userDetails['sel_word'] ?>]" value="N" 
+                            <?php if ($userDetails['mastery'] == 'N') {echo "checked";} ?> >
+                            <label class="small" style="margin-left: -20px;" for="item-3-<?= $userDetails['id'] ?>">
+                                <i class="fas fa-exclamation"></i> <br> Not at all
+                            </label>
+                            <!-- </div> -->
+                            <input type="text" name="hiddenWord" value="<?= $userDetails['sel_word'] ?>" hidden>
+                        </td>
+                    </tr>
+                <?php
                 }
-                    ?>
+                ?>
 
-                    </tbody>
+                </tbody>
 
             </table>
         </div>

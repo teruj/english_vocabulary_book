@@ -28,16 +28,16 @@ if(!$_SESSION['id']){
         <div class="card-header bg-white border-0">
             <h1 class="text-center">Add New User</h1>
         </div>
-        <div class="card-body">
+        <div class="card-body px-5">
             <form action="../actions/register.php" method="post">
                 <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" class="form-control mb-2" required autofocus>
+                <input type="text" name="firstName" id="firstName" class="form-control mb-3" required autofocus>
 
                 <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" class="form-control mb-2" required>
+                <input type="text" name="lastName" id="lastName" class="form-control mb-3" required>
 
                 <label for="username">Username</label>
-                <input type="text" name="username" id="username" class="form-control mb-2" maxlength="15" required placeholder="max length: 15">
+                <input type="text" name="username" id="username" class="form-control mb-3" maxlength="15" required placeholder="max length: 15">
 
                 <label for="passw">Password</label>
                 <input type="password" name="passw" id="passw" class="form-control mb-5" required>

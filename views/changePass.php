@@ -43,7 +43,7 @@ $userID = $_GET['userID'];
 
 
                 <label for="passw">New password</label>
-                <input type="password" name="passw" id="passw" class=" form-control mb-2" required>
+                <input type="password" name="passw" id="passw" class="form-control mb-2" required>
 
 
                 <label for="cPassw">(Again for confirmation)</label>
