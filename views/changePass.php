@@ -50,7 +50,8 @@ $userID = $_GET['userID'];
 
                     <button class="d-block w-50 mx-auto mb-4 btn btn-danger rounded-pill form-control">Submit</button>
 
-                    <button type="button" name="" class="d-block w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button>
+                    <a href="editUser.php?userID=<?= $userID ?>" type="button" name="" class="d-block w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" >Back</a>
+                    <!-- <button type="button" name="" class="d-block w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button> -->
 
             </form>
         </div>

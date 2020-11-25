@@ -40,7 +40,7 @@ $answer =trim($_POST['answer']);
         <div class="card-header">
             <h1 class="h1 text-center"><?= $theWord ?></h1>
         </div>
-        
+
         <div class="card-body">
             <div class="mt-4 w-75 mx-auto">
                 <?php $quiz->displayColor($selected,$answer)?>
@@ -50,7 +50,9 @@ $answer =trim($_POST['answer']);
 
             <a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" name="back" class="w-50 btn btn-success rounded-pill form-control d-block mt-5 mx-auto">Next Word Quiz</a>
 
-            <button type="button" name="" class="w-25 btn btn-outline-dark rounded-pill form-control d-block mt-4 mx-auto" onclick="history.back()">Back</button>
+            <a href="../views/<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>"  type="button" name="" class="d-block mt-5 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" >Home</a>
+
+            <!-- <button type="button" name="" class="w-25 btn btn-outline-dark rounded-pill form-control d-block mt-4 mx-auto" onclick="history.back()">Back</button> -->
         </div>
     </div>
 

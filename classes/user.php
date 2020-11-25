@@ -163,7 +163,7 @@ class User extends Database{
         }elseif($sortWord == 'DESC'){
             $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] ORDER BY sel_word DESC";
         }else{
-            die("Error: sql".$this->conn->error);
+            die("Error: sql");
         }
 
 
@@ -191,12 +191,31 @@ class User extends Database{
         }
     }
 
+    public function getMyOrderedMastery($sortMastery){
+        if($sortMastery == 'C'){
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'C' ORDER BY sel_word ASC ";
+        }elseif($sortMastery == 'S'){
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'S' ORDER BY sel_word ASC ";
+        }elseif($sortMastery == 'N'){
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'N' ORDER BY sel_word ASC ";
+        }else{
+            die("Error: sql".$this->conn->error);
+        }
+
+
+        if ($result = $this->conn->query($sql)) {
+            return $result;
+        } else {
+            die("Error: query" . $this->conn->error);
+        }
+    }
+
 
 
     public function updateUserTopList($mastery){
         foreach($mastery as $key => $eachMastery){
             $key = $this->escapeString($key);
-            $sql = "UPDATE personal_list SET mastery = '$eachMastery' WHERE sel_word = '$key' ";
+            $sql = "UPDATE personal_list SET mastery = '$eachMastery' WHERE id = '$key' ";
             $this->conn->query($sql);
             }
             header("location: ../views/userTopList.php");

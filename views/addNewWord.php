@@ -134,7 +134,8 @@ if(!$_SESSION['id']){
 
                         <div class="d-flex justify-content-around mb-5">
                             <button type="submit" name="submit" class=" w-50 btn btn-lg btn-danger rounded-pill form-control">New word  &ensp;  submit</button>
-                            <button type="button" name="" class="w-25 btn btn-lg btn-dark rounded-pill form-control" onclick="history.back()">Back</button>
+                            <a href="../views/<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>"  type="button" name="" class="w-25 btn btn-lg btn-outline-dark rounded-pill form-control" >Home</a>
+                            <!-- <button type="button" name="" class="w-25 btn btn-lg btn-dark rounded-pill form-control" onclick="history.back()">Back</button> -->
                         </div>
                     </div>
                 </div>

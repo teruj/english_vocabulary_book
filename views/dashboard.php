@@ -30,7 +30,6 @@ $userList = $user->getUsers();
 </head>
 <body>
 <?php include "navBar.php" ?>
-        
 
         <div class="container-lg">
             <p class="text-center  mt-5">
@@ -70,7 +69,7 @@ $userList = $user->getUsers();
 
                         <td>
                             <a class="btn btn-sm btn-outline-success" href="./editUser.php?userID=<?= $userDetails['id'] ?>">Edit</a>
-                            
+
                             <a class="btn btn-sm btn-outline-secondary" href="../actions/deleteUser.php?userID=<?= $userDetails['id'] ?>"></i>Delete</a>
                         </td>
 
@@ -79,7 +78,7 @@ $userList = $user->getUsers();
                     <?php
                         }
                     ?>
-                    
+
                 </tbody>
 
             </table>

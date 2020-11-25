@@ -81,7 +81,8 @@ $quiz = $user->forQuizArray($userID);
 
                 <button type="submit" class="w-50 btn btn-success mt-5 rounded-pill d-block mx-auto" name="btnAns">Answer</button>
 
-                <button type="button" name="" class="d-block mt-4 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button>
+                <a href="../views/<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>"  type="button" name="" class="d-block mt-5 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" >Home</a>
+                <!-- <button type="button" name="" class="d-block mt-4 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button> -->
 
             </div>
 
