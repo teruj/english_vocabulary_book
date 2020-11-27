@@ -15,7 +15,8 @@
             position: fixed;
             right: 5px;
             bottom: 5px;
-            opacity: 0.6;
+            opacity: 0.4;
+            border-radius: 80% 80% 4px 4px;
         }
 
         /* #click-to-top:hover{

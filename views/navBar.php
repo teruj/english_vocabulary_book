@@ -13,8 +13,16 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-dark bg-primary navbar-expand-lg ">
-        <a href="<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>" class="navbar-brand"><h1 class="h6">(TITLE undefined)<br>(-personal english vocabulary book-)</h1></a>
+    <nav class="navbar navbar-dark bg-primary navbar-expand-md " style="height: 80px;">
+        <a href="<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>" class="navbar-brand pb-0">
+            <div class="d-flex pb-0">
+                <h1 class=" h1 text-center mb-0 pb-0 text-warning" style="width: 55%;">EEtango</h1>
+                <h2 class=" h6 pt-4 mb-0 pb-0" style="width: 30%; color:yellow;opacity:0.8;" >-ええたんご-</h2>
+
+            </div>
+
+            <h3 class="small  mb-0 " style="opacity: 0.8; margin-top:-2px;">(-Personal English vocabulary book-)</h3>
+        </a>
 
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
@@ -22,16 +30,16 @@
         </button>
 
 
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="collapse navbar-collapse ml-3" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item mr-4 ml-1"><a href="./dashboard.php" class="nav-link  btn btn-sm btn-primary text-white"><?php if($_SESSION['role'] == 'A'){echo "Dashboard";}  ?> </a></li>
-                <li class="nav-item mr-4"><a href="./userTopList.php" class="nav-link btn btn-sm btn-primary text-white">My Word List</a></li>
-                <li class="nav-item mr-4"><a href="./addNewWord.php" class="nav-link btn btn-sm btn-primary text-white">Add New Word</a></li>
-                <li class="nav-item"><a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" class="nav-link btn btn-sm btn-primary text-white">Quiz from your list</a></li>
+                <li class="nav-item mr-4 ml-1"><a href="./dashboard.php" class="nav-link text-white"><?php if($_SESSION['role'] == 'A'){echo "Dashboard";}  ?> </a></li>
+                <li class="nav-item mr-4"><a href="./userTopList.php" class="nav-link text-white">My Word List</a></li>
+                <li class="nav-item mr-4"><a href="./addNewWord.php" class="nav-link text-white">Add New Word</a></li>
+                <li class="nav-item"><a href="./quiz.php?userID=<?= $_SESSION['id'] ?>" class="nav-link  text-white">Quiz from My list</a></li>
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item"><a href="./editUser.php?userID=<?= $_SESSION['id'] ?>" class="nav-link text-white btn btn-sm btn-primary rounded-pill"><?= $_SESSION['name'];?></a></li>
+                <li class="nav-item"><a href="./editUser.php?userID=<?= $_SESSION['id'] ?>" class="nav-link text-white "><?= $_SESSION['name'];?></a></li>
                 <a class="ml-3 btn btn-danger rounded-pill font-weight-bold" style="width:90px;" href="./logout.php" >Log out</a>
 
             </ul>

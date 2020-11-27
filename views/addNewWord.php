@@ -11,59 +11,15 @@ if(!$_SESSION['id']){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="Description" content="Enter your description here"/>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-<style>
-
-    /* .radio-inline__input {
-        clip: rect(1px, 1px, 1px, 1px);
-        position: absolute !important;
-    }
-
-    .radio-inline__label {
-        display: inline-block;
-        margin: 0px 9px;
-        border-radius: 5px;
-        transition: all .2s;
-        background: lightgrey;
-        width: 25%;
-        height: 60px;
-        line-height: 30px;
-    }
-
-    .radio-inline__input:checked + .radio-inline__label {
-        color: #fff;
-        text-shadow: 0 0 1px rgba(0,0,0,.7);
-    }
-
-    #item-1:checked + .radio-inline__label {
-        background: blue;
-    }
-    #item-2:checked + .radio-inline__label {
-        background: green;
-
-    }
-    #item-3:checked + .radio-inline__label {
-        background: red;
-    }
-
-    .radio-inline__input:focus + .radio-inline__label {
-        outline-color: #4D90FE;
-        outline-offset: -1px;
-        outline-style: auto;
-        outline-width: 5px;
-    }
-
-    #newWord::placeholder{
-        font-style: normal;
-    } */
-</style>
-<title>Add New Word</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style></style>
+    <title>Add New Word</title>
 </head>
 <body>
 

@@ -39,7 +39,7 @@ $userList = $user->getUsers();
 
                 <a class="w-25 btn btn-primary mx-2 px-5 rounded-pill" href="addNewUser.php"><i class="fas fa-plus"></i> Add New User</a>
             </p>
-            <table class="table table-sm table-striped text-center table-bordered table-hover">
+            <table class="table table-sm table-striped text-center table-bordered ">
                 <thead class="table-dark">
                     <tr>
                         <th>User ID</th>

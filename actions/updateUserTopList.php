@@ -8,6 +8,8 @@ include_once "../classes/user.php";
 // $id = $_POST['id'];
 $mastery = $_POST['mastery'];
 
+// $afterSort = $_POST['afterSort'];
+
 // print_r($mastery);
 
 $user = new User;

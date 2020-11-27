@@ -48,8 +48,8 @@ $quiz = $user->forQuizArray($userID);
 
 <div class="card mt-5 w-50 mx-auto">
     <form action="./quizAnswer.php" method="post">
-        <div class="card-header">
-            <h1 class="h1 text-center"><?= stripslashes($quiz[0])   ?></h1>
+        <div class="card-header bg-success">
+            <h1 class="display-4 font-weight-bold text-light text-center mb-0"><?= stripslashes($quiz[0])   ?></h1>
         </div>
         <div class="card-body">
 
@@ -81,7 +81,7 @@ $quiz = $user->forQuizArray($userID);
 
                 <button type="submit" class="w-50 btn btn-success mt-5 rounded-pill d-block mx-auto" name="btnAns">Answer</button>
 
-                <a href="../views/<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>"  type="button" name="" class="d-block mt-5 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" >Home</a>
+                <a href="../views/<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>"  type="button" name="" class="d-block mt-3 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" >Home</a>
                 <!-- <button type="button" name="" class="d-block mt-4 w-25 mx-auto btn btn-sm btn-outline-dark rounded-pill form-control" onclick="history.back()">Back</button> -->
 
             </div>

@@ -193,11 +193,11 @@ class User extends Database{
 
     public function getMyOrderedMastery($sortMastery){
         if($sortMastery == 'C'){
-            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'C' ORDER BY sel_word ASC ";
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'C'  ";
         }elseif($sortMastery == 'S'){
-            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'S' ORDER BY sel_word ASC ";
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'S'  ";
         }elseif($sortMastery == 'N'){
-            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'N' ORDER BY sel_word ASC ";
+            $sql = "SELECT * FROM personal_list WHERE `user_id` = $_SESSION[id] AND mastery = 'N'  ";
         }else{
             die("Error: sql".$this->conn->error);
         }
@@ -352,7 +352,7 @@ class User extends Database{
     }
 
     public function noticeAddWord($userID){
-        
+
         $sql = "SELECT * FROM personal_list WHERE `user_id` = $userID ";
         if($result = $this->conn->query($sql)){
             return $result;
