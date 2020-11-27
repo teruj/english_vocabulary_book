@@ -16,7 +16,7 @@
     <nav class="navbar navbar-dark bg-primary navbar-expand-md " style="height: 80px;">
         <a href="<?php if($_SESSION['role'] == 'A'){echo "dashboard.php";}else{echo "userTopList.php";} ?>" class="navbar-brand pb-0">
             <div class="d-flex pb-0">
-                <h1 class=" h1 text-center mb-0 pb-0 text-warning" style="width: 55%;">EEtango</h1>
+                <h1 class=" h1 text-center mb-0 pb-0 text-warning" style="width: 61%;">E.E.tango</h1>
                 <h2 class=" h6 pt-4 mb-0 pb-0" style="width: 30%; color:yellow;opacity:0.8;" >-ええたんご-</h2>
 
             </div>

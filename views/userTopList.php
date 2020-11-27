@@ -108,7 +108,7 @@ if(isset($_POST['sortMastery'])){
                                 <p class="small mb-1">( pronunciation )</p>
 
                                 <div class="small mb-0">
-                                    (&nbsp;PoS
+                                    (&nbsp;<i>PoS</i> 
                                     <button name="sortPoS" value="ASC" class="d-inline-block btn btn-sm btn-light text-success py-0 px-0 rounded-pill" style="font-size: 4px;width:40px;"><?php if($sortPoS == 'ASC'){echo "<i class=\"fas fa-angle-double-up\"></i>";} ?>ASC</button>
 
                                     <button name="sortPoS" value="DESC" class="d-inline-block btn btn-sm btn-light text-success py-0 px-0 rounded-pill" style="font-size: 4px;width:40px;">DESC<?php if($sortPoS == 'DESC'){echo "<i class='fas fa-angle-double-down'></i>";} ?></button>
@@ -168,7 +168,7 @@ if(isset($_POST['sortMastery'])){
                         <td class="col-2 text-center" style="height:100px;">
 
                             <div class="pt-1 mb-0" style="overflow:auto">
-                                <a href="editWord.php?selWord=<?= $user->escapeString($userDetails['sel_word'])  ?>" class="btn btn-sm  btn-white w-100"><span class="h5 font-weight-bold"><?= $userDetails['sel_word'] ?></span> </a>
+                                <a href="editWord.php?selWord=<?= $user->escapeString($userDetails['sel_word'])  ?>" class="btn btn-sm  btn-white w-100"><span class="h4 font-weight-bold text-primary" ><?= $userDetails['sel_word'] ?></span> </a>
 
                                 <br>
                                 <span class="text-secondary small">(<?= $userDetails['sel_pronunciation'] ?>)</span>
